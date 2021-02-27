@@ -1,6 +1,5 @@
 import pytest
 
-from trove_classifiers import classifiers_sorted
 from tests.lib import trove_tester, InvalidClassifier
 
 
