@@ -1,5 +1,7 @@
+from typing import Dict, List, Set
+
 # A set of classifier names
-sorted_classifiers = [
+sorted_classifiers: List[str] = [
     "Development Status :: 1 - Planning",
     "Development Status :: 2 - Pre-Alpha",
     "Development Status :: 3 - Alpha",
@@ -39,6 +41,7 @@ sorted_classifiers = [
     "Environment :: GPU :: NVIDIA CUDA :: 10.0",
     "Environment :: GPU :: NVIDIA CUDA :: 10.1",
     "Environment :: GPU :: NVIDIA CUDA :: 10.2",
+    "Environment :: GPU :: NVIDIA CUDA :: 11",
     "Environment :: GPU :: NVIDIA CUDA :: 11.0",
     "Environment :: GPU :: NVIDIA CUDA :: 11.1",
     "Environment :: GPU :: NVIDIA CUDA :: 11.2",
@@ -47,6 +50,10 @@ sorted_classifiers = [
     "Environment :: GPU :: NVIDIA CUDA :: 11.5",
     "Environment :: GPU :: NVIDIA CUDA :: 11.6",
     "Environment :: GPU :: NVIDIA CUDA :: 11.7",
+    "Environment :: GPU :: NVIDIA CUDA :: 11.8",
+    "Environment :: GPU :: NVIDIA CUDA :: 12",
+    "Environment :: GPU :: NVIDIA CUDA :: 12 :: 12.0",
+    "Environment :: GPU :: NVIDIA CUDA :: 12 :: 12.1",
     "Environment :: Handhelds/PDA's",
     "Environment :: MacOS X",
     "Environment :: MacOS X :: Aqua",
@@ -60,6 +67,9 @@ sorted_classifiers = [
     "Environment :: Web Environment :: Buffet",
     "Environment :: Web Environment :: Mozilla",
     "Environment :: Web Environment :: ToscaWidgets",
+    "Environment :: WebAssembly",
+    "Environment :: WebAssembly :: Emscripten",
+    "Environment :: WebAssembly :: WASI",
     "Environment :: Win32 (MS Windows)",
     "Environment :: X11 Applications",
     "Environment :: X11 Applications :: GTK",
@@ -111,6 +121,7 @@ sorted_classifiers = [
     "Framework :: Django :: 4",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
     "Framework :: Django CMS",
     "Framework :: Django CMS :: 3.4",
     "Framework :: Django CMS :: 3.5",
@@ -119,6 +130,9 @@ sorted_classifiers = [
     "Framework :: Django CMS :: 3.8",
     "Framework :: Django CMS :: 3.9",
     "Framework :: Django CMS :: 3.10",
+    "Framework :: Django CMS :: 3.11",
+    "Framework :: Django CMS :: 4.0",
+    "Framework :: Django CMS :: 4.1",
     "Framework :: FastAPI",
     "Framework :: Flake8",
     "Framework :: Flask",
@@ -150,6 +164,7 @@ sorted_classifiers = [
     "Framework :: Odoo :: 13.0",
     "Framework :: Odoo :: 14.0",
     "Framework :: Odoo :: 15.0",
+    "Framework :: Odoo :: 16.0",
     "Framework :: Opps",
     "Framework :: Paste",
     "Framework :: Pelican",
@@ -167,9 +182,15 @@ sorted_classifiers = [
     "Framework :: Plone :: 5.2",
     "Framework :: Plone :: 5.3",
     "Framework :: Plone :: 6.0",
+    "Framework :: Plone :: 6.1",
     "Framework :: Plone :: Addon",
     "Framework :: Plone :: Core",
+    "Framework :: Plone :: Distribution",
     "Framework :: Plone :: Theme",
+    "Framework :: Pycsou",
+    "Framework :: Pydantic",
+    "Framework :: Pydantic :: 1",
+    "Framework :: Pydantic :: 2",
     "Framework :: Pylons",
     "Framework :: Pyramid",
     "Framework :: Pytest",
@@ -193,6 +214,8 @@ sorted_classifiers = [
     "Framework :: Wagtail :: 1",
     "Framework :: Wagtail :: 2",
     "Framework :: Wagtail :: 3",
+    "Framework :: Wagtail :: 4",
+    "Framework :: Wagtail :: 5",
     "Framework :: ZODB",
     "Framework :: Zope",
     "Framework :: Zope2",
@@ -278,6 +301,7 @@ sorted_classifiers = [
     "License :: OSI Approved :: Mozilla Public License 1.0 (MPL)",
     "License :: OSI Approved :: Mozilla Public License 1.1 (MPL 1.1)",
     "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "License :: OSI Approved :: Mulan Permissive Software License v2 (MulanPSL-2.0)",
     "License :: OSI Approved :: Nethack General Public License",
     "License :: OSI Approved :: Nokia Open Source License",
     "License :: OSI Approved :: Open Group Test Suite License",
@@ -374,6 +398,7 @@ sorted_classifiers = [
     "Operating System :: Microsoft :: Windows :: Windows 8",
     "Operating System :: Microsoft :: Windows :: Windows 8.1",
     "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
     "Operating System :: Microsoft :: Windows :: Windows 95/98/2000",
     "Operating System :: Microsoft :: Windows :: Windows CE",
     "Operating System :: Microsoft :: Windows :: Windows NT/2000",
@@ -431,6 +456,7 @@ sorted_classifiers = [
     "Programming Language :: Kotlin",
     "Programming Language :: Lisp",
     "Programming Language :: Logo",
+    "Programming Language :: Lua",
     "Programming Language :: ML",
     "Programming Language :: Modula",
     "Programming Language :: OCaml",
@@ -569,6 +595,9 @@ sorted_classifiers = [
     "Topic :: Education",
     "Topic :: Education :: Computer Aided Instruction (CAI)",
     "Topic :: Education :: Testing",
+    "Topic :: File Formats",
+    "Topic :: File Formats :: JSON",
+    "Topic :: File Formats :: JSON :: JSON Schema",
     "Topic :: Games/Entertainment",
     "Topic :: Games/Entertainment :: Arcade",
     "Topic :: Games/Entertainment :: Board Games",
@@ -805,12 +834,18 @@ sorted_classifiers = [
     "Typing :: Typed",
 ]
 
-classifiers = set(sorted_classifiers)
+classifiers: Set[str] = set(sorted_classifiers)
 
 
 # A mapping from the deprecated classifier name to a list of zero or more valid
 # classifiers that should replace it
-deprecated_classifiers = {
+deprecated_classifiers: Dict[str, List[str]] = {
     "Natural Language :: Ukranian": ["Natural Language :: Ukrainian"],
     "Topic :: Communications :: Chat :: AOL Instant Messenger": [],
 }
+
+
+# All classifiers, including deprecated classifiers
+all_classifiers: List[str] = sorted(
+    sorted_classifiers + list(deprecated_classifiers.keys())
+)
